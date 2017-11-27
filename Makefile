@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/11/27 11:58:11 by npineau          ###   ########.fr        #
+#    Updated: 2017/11/27 15:38:18 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,19 +25,14 @@ DIRLIB	:=	libft
 
 ### FILES ###
 
-include $(DIRCLI)/sources.mk
-include $(DIRSRV)/sources.mk
+include $(DIRSRC)/src.mk
 
-HEADCLI	:=	client.h
-HEADSRV	:=	server.h
+HEADPS	:=	push_swap.h
 LIB		:=	libft.a
 
 ### PATHS ###
 
-POBJCLI		:=	$(addprefix $(DIROBJ)/, $(OBJCLI))
-POBJSRV		:=	$(addprefix $(DIROBJ)/, $(OBJSRV))
-PHEADSRV	:=	$(DIRINC)/$(HEADSRV)
-PHEADCLI	:=	$(DIRINC)/$(HEADCLI)
+POBJ		:=	$(addprefix $(DIROBJ)/, $(OBJ))
 PLIB		:=	$(DIRLIB)/$(LIB)
 
 ### COMPILATION VARIABLES ###
@@ -55,7 +50,7 @@ LINK	=	$(CC) -o $@ $^ $(L_FLAG)
 
 .PHONY: all clean fclean re
 
-all: $(SERVEUR) $(CLIENT)
+all: $(CHECKER)
 
 ### LIBFT ###
 
@@ -67,16 +62,11 @@ $(PLIB):
 $(DIROBJ):
 	mkdir $(DIROBJ)
 
-$(POBJSRV): |$(DIROBJ)
-
-$(POBJCLI): |$(DIROBJ)
+$(POBJ): |$(DIROBJ)
 
 ### EXECUTABLE ###
 
-$(CLIENT): $(PLIB) $(POBJCLI)
-	$(LINK)
-
-$(SERVEUR): $(PLIB) $(POBJSRV)
+$(CHECKER): $(PLIB) $(POBJ)
 	$(LINK)
 
 ### CLEAN UP ###
@@ -85,7 +75,7 @@ clean:
 	rm -rf $(DIROBJ)
 
 fclean: clean
-	rm -f $(CLIENT) $(SERVEUR)
+	rm -f $(CHECKER)
 
 re: fclean all
 

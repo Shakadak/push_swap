@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   args_to_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 14:47:50 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/27 15:41:18 by npineau          ###   ########.fr       */
+/*   Created: 2017/11/27 15:23:27 by npineau           #+#    #+#             */
+/*   Updated: 2017/11/27 15:38:59 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft/inc/libft.h"
 
-int	parse_int(t_string in, t_string *out, int *integer);
-int	args_to_stack(size_t n, char **args, t_rb *a);
-
-#endif
+int	args_to_stack(size_t n, char **args, t_rb *a)
+{
+	(void)n;
+	(void)args;
+	(void)a;
+	return (0);
+}
