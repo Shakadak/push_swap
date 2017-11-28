@@ -6,7 +6,7 @@
 /*   By: nathanael <npineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 12:46:52 by nathanael         #+#    #+#             */
-/*   Updated: 2017/11/27 14:46:28 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/28 13:58:08 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	parse_nat(t_string in, t_string *out, uint32_t *nat)
 	t_pair	pair;
 	int		check;
 	size_t	len;
+	size_t	i;
 
 	pair = strspan(ft_isdigit, in);
 	check = !ft_strempty(pair.fst);
@@ -27,8 +28,9 @@ int	parse_nat(t_string in, t_string *out, uint32_t *nat)
 		if (len < 10 || (len == 10 && ft_strcmp(pair.fst, "4294967295") <= 0))
 		{
 			*nat = 0;
-			while (len > 0)
-				*nat = *nat * 10 + (((char*)pair.fst)[len -= 1] - '0');
+			i = 0;
+			while (i < len)
+				*nat = *nat * 10 + (((char*)pair.fst)[i++] - '0');
 		}
 		else
 		{
@@ -49,14 +51,14 @@ int	parse_int(t_string in, t_string *out, int *integer)
 	mod = 1;
 	if (in[0] == '-')
 		mod = -1;
-	if (in[0] == '+' && in[0] == '-')
+	if (in[0] == '+' || in[0] == '-')
 		in += 1;
 	if ((check = parse_nat(in, out, &nat)))
 	{
 		if (mod == -1 && nat <= 2147483648u)
-			*integer = mod * (int)nat;
+			*integer = mod * nat;
 		else if (mod == 1 && nat <= 2147483647u)
-			*integer = (int)nat;
+			*integer = nat;
 		else
 			check = !check;
 	}

@@ -1,5 +1,6 @@
 SRC	:=\
 	args_to_stack.c\
+	get_program.c\
 	main_checker.c\
 	parse_num.c
 
