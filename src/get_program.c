@@ -6,13 +6,14 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 11:13:08 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/28 11:39:46 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/30 10:54:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft/inc/libft.h"
 
-t_string	get_operation(t_string name)
+t_str	get_operation(t_str name)
 {
 	static char	ops[11][2][4] = {
 		{"sa", "sa"},
@@ -43,15 +44,15 @@ t_string	get_operation(t_string name)
 
 int	get_program(t_rb *instructions)
 {
-	int			check;
-	t_string	buff;
-	t_string	op;
+	int		check;
+	t_str	buff;
+	t_str	op;
 
 	buff = NULL;
 	while ((check = get_next_line(STDIN_FILENO, &buff)) > 0)
 	{
-		ft_putendl("[get_program] in while");
 		op = get_operation(buff);
+		free(buff);
 		if (op == NULL)
 		{
 			return (0);

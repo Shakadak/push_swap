@@ -6,14 +6,14 @@
 /*   By: nathanael <npineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 12:46:52 by nathanael         #+#    #+#             */
-/*   Updated: 2017/11/28 13:58:08 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/29 12:29:01 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/inc/libft.h"
 
-int	parse_nat(t_string in, t_string *out, uint32_t *nat)
+int	parse_nat(t_str in, t_str *out, uint32_t *nat)
 {
 	t_pair	pair;
 	int		check;
@@ -42,7 +42,7 @@ int	parse_nat(t_string in, t_string *out, uint32_t *nat)
 	return (check);
 }
 
-int	parse_int(t_string in, t_string *out, int *integer)
+int	parse_int(t_str in, t_str *out, int *integer)
 {
 	int			check;
 	int			mod;
